@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高子崴 (B48B022) | Personal Portfolio & Beat Showcase</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts - Inter & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            oat: {
+              bg: '#f4f3f0',
+              card: '#ffffff',
+              border: '#e5e3dc',
+              hover: '#eae8e1',
+              accent: '#8c7b6c',
+              accentDark: '#6b5c4f',
+              text: '#1f2128',
+              muted: '#666970',
+              soft: '#f9f8f6'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Global Styles */
+    body {
+      background-color: #f4f3f0;
+      color: #1f2128;
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f4f3f0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #d4d0c7;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #b8b3a8;
+    }
+
+    /* Range Slider Styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: transparent;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 6px;
+      cursor: pointer;
+      background: #e5e3dc;
+      border-radius: 3px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #8c7b6c;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.1s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    /* Card Shadow & Hover Animation */
+    .card-shadow {
+      box-shadow: 0 4px 20px -2px rgba(31, 33, 40, 0.05), 0 2px 6px -1px rgba(31, 33, 40, 0.03);
+    }
+    .card-shadow-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-shadow-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px -4px rgba(31, 33, 40, 0.08), 0 4px 12px -2px rgba(31, 33, 40, 0.04);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-oat-accent selection:text-white">
+
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header class="sticky top-0 z-50 bg-[#f4f3f0]/90 backdrop-blur-md border-b border-oat-border transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand / Identity -->
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-oat-accent text-white flex items-center justify-center font-bold text-lg shadow-sm">
+          高
+        </div>
+        <div>
+          <h1 class="text-lg font-bold tracking-tight text-oat-text leading-none">高子崴</h1>
+          <span class="text-xs font-mono text-oat-muted tracking-wider">B48B022</span>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="flex space-x-2 bg-oat-border/50 p-1.5 rounded-full border border-oat-border">
+        <button id="tab-btn-about" onclick="switchTab('about')" 
+          class="px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center space-x-2 bg-white text-oat-text shadow-sm">
+          <i class="fa-regular fa-user text-xs"></i>
+          <span>About Me</span>
+        </button>
+        <button id="tab-btn-music" onclick="switchTab('music')" 
+          class="px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-oat-muted hover:text-oat-text">
+          <i class="fa-solid fa-music text-xs"></i>
+          <span>Music</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT CONTAINER ================= -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+    <!-- =================================================== -->
+    <!-- SECTION 1: ABOUT ME TAB (DEFAULT ACTIVE HOME PAGE) -->
+    <!-- =================================================== -->
+    <section id="tab-content-about" class="space-y-8 animate-fadeIn">
+      
+      <!-- Profile Hero Card -->
+      <div class="bg-oat-card rounded-2xl p-6 sm:p-10 border border-oat-border card-shadow">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left: Inline SVG Custom Chibi Avatar -->
+          <div class="md:col-span-5 flex justify-center">
+            <div class="relative w-56 h-56 sm:w-64 sm:h-64 rounded-2xl bg-gradient-to-b from-oat-soft to-oat-border/40 p-4 border border-oat-border flex items-center justify-center shadow-inner group">
+              
+              <!-- SVG Avatar Vector -->
+              <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-md">
+                <!-- Background Circle -->
+                <circle cx="100" cy="100" r="90" fill="#eae8e1" />
+
+                <!-- Face & Neck -->
+                <path d="M 85 130 L 115 130 L 115 150 L 85 150 Z" fill="#fcd7be" />
+                <ellipse cx="100" cy="110" rx="42" ry="40" fill="#fde0cc" />
+                
+                <!-- Undercut / Side Fade Hair (Dark Charcoal) -->
+                <path d="M 57 100 C 56 120 62 125 68 125 C 70 100 68 85 70 75 C 60 80 57 90 57 100 Z" fill="#2d2f36" />
+                <path d="M 143 100 C 144 120 138 125 132 125 C 130 100 132 85 130 75 C 140 80 143 90 143 100 Z" fill="#2d2f36" />
+                
+                <!-- Ears -->
+                <circle cx="58" cy="110" r="8" fill="#fcd7be" />
+                <circle cx="142" cy="110" r="8" fill="#fcd7be" />
+
+                <!-- Fluffy Curly Top Hair (Voluminous Only On Top) -->
+                <g fill="#1f2128">
+                  <circle cx="100" cy="62" r="22" />
+                  <circle cx="82" cy="66" r="19" />
+                  <circle cx="118" cy="66" r="19" />
+                  <circle cx="68" cy="74" r="16" />
+                  <circle cx="132" cy="74" r="16" />
+                  <circle cx="92" cy="50" r="18" />
+                  <circle cx="110" cy="52" r="17" />
+                  <!-- Bangs -->
+                  <path d="M 72 75 Q 85 92 92 78 Q 100 95 108 78 Q 115 92 128 75 Z" fill="#1f2128" />
+                </g>
+
+                <!-- Eyes & Eyebrows -->
+                <ellipse cx="83" cy="110" rx="4" ry="5.5" fill="#1f2128" />
+                <ellipse cx="117" cy="110" rx="4" ry="5.5" fill="#1f2128" />
+                <circle cx="84.5" cy="108.5" r="1.5" fill="#ffffff" />
+                <circle cx="118.5" cy="108.5" r="1.5" fill="#ffffff" />
+                <path d="M 76 100 Q 84 97 90 101" stroke="#1f2128" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                <path d="M 124 100 Q 116 97 110 101" stroke="#1f2128" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+                <!-- Smile -->
+                <path d="M 92 124 Q 100 130 108 124" stroke="#8c7b6c" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                
+                <!-- Gentle Blush -->
+                <ellipse cx="73" cy="118" rx="6" ry="3" fill="#f4a28c" opacity="0.4" />
+                <ellipse cx="127" cy="118" rx="6" ry="3" fill="#f4a28c" opacity="0.4" />
+
+                <!-- Studio Over-Ear Headphones -->
+                <path d="M 52 90 C 50 40 150 40 148 90" stroke="#8c7b6c" stroke-width="7" stroke-linecap="round" fill="none" />
+                <path d="M 52 90 C 50 40 150 40 148 90" stroke="#1f2128" stroke-width="4" stroke-linecap="round" fill="none" />
+                <rect x="46" y="94" width="14" height="30" rx="7" fill="#8c7b6c" />
+                <rect x="44" y="98" width="6" height="22" rx="3" fill="#1f2128" />
+                <rect x="140" y="94" width="14" height="30" rx="7" fill="#8c7b6c" />
+                <rect x="150" y="98" width="6" height="22" rx="3" fill="#1f2128" />
+
+                <!-- Hoodie Collar -->
+                <path d="M 60 160 Q 100 175 140 160 L 150 200 L 50 200 Z" fill="#3b3a36" />
+                <path d="M 85 150 L 100 170 L 115 150" stroke="#eae8e1" stroke-width="2" fill="none" />
+              </svg>
+
+              <!-- Floating Tag Badge -->
+              <span class="absolute -bottom-3 bg-oat-text text-white text-[11px] font-mono px-3 py-1 rounded-full shadow-md">
+                Music Producer & Designer
+              </span>
+            </div>
+          </div>
+
+          <!-- Right: Personal Bio Info -->
+          <div class="md:col-span-7 space-y-4 text-center md:text-left">
+            <div>
+              <div class="inline-block px-3 py-1 bg-oat-soft border border-oat-border rounded-full text-xs font-semibold text-oat-accent mb-2">
+                B48B022 • 高子崴
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-bold text-oat-text tracking-tight">
+                「用聲音捕捉情緒，以視覺定義風格。」
+              </h2>
+            </div>
+
+            <p class="text-sm sm:text-base text-oat-muted leading-relaxed">
+              嗨！我是 <strong class="text-oat-text font-semibold">高子崴</strong>。專注於 <span class="text-oat-accent font-medium">Beat Making 音樂創作與編曲</span> 以及 <span class="text-oat-accent font-medium">個人服飾品牌視覺設計</span>。習慣在安靜的深夜沉浸於 DAW 音軌與設計草圖之間。
+            </p>
+
+            <p class="text-sm text-oat-muted leading-relaxed">
+              相處個性上，初次見面時我屬於安靜且善於觀察的沉穩型；但在建立默契與熟絡之後，會展現出無比的熱情、真誠與對視覺、音樂細節的極致執著。
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2 justify-center md:justify-start pt-2">
+              <span class="px-3 py-1 rounded-md bg-oat-soft border border-oat-border text-xs text-oat-text font-medium">#BeatMaker</span>
+              <span class="px-3 py-1 rounded-md bg-oat-soft border border-oat-border text-xs text-oat-text font-medium">#ApparelDesign</span>
+              <span class="px-3 py-1 rounded-md bg-oat-soft border border-oat-border text-xs text-oat-text font-medium">#MinimalistAesthetics</span>
+              <span class="px-3 py-1 rounded-md bg-oat-soft border border-oat-border text-xs text-oat-text font-medium">#WebLogic</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Skills Grid (3 Major Pillars) -->
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-oat-text tracking-tight">專業領域與技能 (Professional Skills)</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Skill Card 1 -->
+          <div class="bg-oat-card rounded-xl p-6 border border-oat-border card-shadow card-shadow-hover space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-oat-soft text-oat-accent border border-oat-border flex items-center justify-center text-xl">
+              <i class="fa-solid fa-sliders"></i>
+            </div>
+            <h4 class="text-lg font-bold text-oat-text">音樂創作與編曲</h4>
+            <p class="text-xs text-oat-muted leading-relaxed">
+              熟悉主流 DAW 製作流程，精通 808 Bass 調校、情感鋼琴聲軌採樣、旋律編排與氛圍層次堆疊。
+            </p>
+            <div class="pt-2 flex flex-wrap gap-1.5">
+              <span class="text-[11px] px-2 py-0.5 bg-oat-soft rounded text-oat-muted border border-oat-border">DAW Beatmaking</span>
+              <span class="text-[11px] px-2 py-0.5 bg-oat-soft rounded text-oat-muted border border-oat-border">808 Sound Design</span>
+              <span class="text-[11px] px-2 py-0.5 bg-oat-soft rounded text-oat-muted border border-oat-border">Melodic Keys</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 2 -->
+          <div class="bg-oat-card rounded-xl p-6 border border-oat-border card-shadow card-shadow-hover space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-oat-soft text-oat-accent border border-oat-border flex items-center justify-center text-xl">
+              <i class="fa-solid fa-shirt"></i>
+            </div>
+            <h4 class="text-lg font-bold text-oat-text">品牌視覺與設計</h4>
+            <p class="text-xs text-oat-muted leading-relaxed">
+              獨立主導個人服飾品牌概念開發、Lookbook 視覺統籌、極簡版型思考與品牌識別 (CI) 建構。
+            </p>
+            <div class="pt-2 flex flex-wrap gap-1.5">
+              <span class="text-[11px] px-2 py-0.5 bg-oat-soft rounded text-oat-muted border border-oat-border">Lookbook Visual</span>
+              <span class="text-[11px] px-2 py-0.5 bg-oat-soft rounded text-oat-muted border border-oat-border">Apparel Concept</span>
+              <span class="text-[11px] px-2 py-0.5 bg-oat-soft rounded text-oat-muted border border-oat-border">Brand Identity</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 3 -->
+          <div class="bg-oat-card rounded-xl p-6 border border-oat-border card-shadow card-shadow-hover space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-oat-soft text-oat-accent border border-oat-border flex items-center justify-center text-xl">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h4 class="text-lg font-bold text-oat-text">資訊科技與網頁</h4>
+            <p class="text-xs text-oat-muted leading-relaxed">
+              具備 HTML5 / CSS3 / JavaScript 前端基本開發能力，注重介面互動邏輯與美學視覺流暢度。
+            </p>
+            <div class="pt-2 flex flex-wrap gap-1.5">
+              <span class="text-[11px] px-2 py-0.5 bg-oat-soft rounded text-oat-muted border border-oat-border">HTML / CSS / JS</span>
+              <span class="text-[11px] px-2 py-0.5 bg-oat-soft rounded text-oat-muted border border-oat-border">UI/UX Layout</span>
+              <span class="text-[11px] px-2 py-0.5 bg-oat-soft rounded text-oat-muted border border-oat-border">System Logic</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =================================================== -->
+    <!-- SECTION 2: MUSIC TAB (HIDDEN BY DEFAULT)          -->
+    <!-- =================================================== -->
+    <section id="tab-content-music" class="hidden space-y-8 animate-fadeIn">
+      
+      <!-- Top Music Banner & Main Audio Player Card -->
+      <div class="bg-oat-card rounded-2xl p-6 sm:p-8 border border-oat-border card-shadow relative overflow-hidden">
+        
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-oat-border">
+          
+          <!-- Track Info -->
+          <div class="flex items-center space-x-4 w-full md:w-auto">
+            <div class="w-16 h-16 rounded-xl bg-oat-accent text-white flex items-center justify-center text-2xl shadow-md shrink-0">
+              <i class="fa-solid fa-compact-disc animate-spin-slow"></i>
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <span id="player-genre-badge" class="px-2.5 py-0.5 bg-oat-soft border border-oat-border text-[11px] font-semibold text-oat-accent rounded-md">
+                  Emo Hip-Hop
+                </span>
+                <span id="player-bpm-badge" class="px-2.5 py-0.5 bg-oat-soft border border-oat-border text-[11px] font-mono text-oat-muted rounded-md">
+                  135 BPM
+                </span>
+                <span id="playing-wave-badge" class="hidden px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded-md animate-pulse">
+                  PLAYING
+                </span>
+              </div>
+              <h3 id="player-title" class="text-xl font-bold text-oat-text mt-1">Midnight Reflections</h3>
+              <p id="player-artist" class="text-xs text-oat-muted">Produced by 高子崴</p>
+            </div>
+          </div>
+
+          <!-- Controls & Volume -->
+          <div class="flex items-center space-x-4 w-full md:w-auto justify-between md:justify-end">
+            <div class="flex items-center space-x-3">
+              <button onclick="playPrevTrack()" class="w-10 h-10 rounded-full bg-oat-soft border border-oat-border hover:bg-oat-hover text-oat-text flex items-center justify-center transition-all">
+                <i class="fa-solid fa-backward text-sm"></i>
+              </button>
+              <button id="main-play-btn" onclick="togglePlayPause()" class="w-12 h-12 rounded-full bg-oat-accent hover:bg-oat-accentDark text-white flex items-center justify-center shadow-md transition-all">
+                <i id="main-play-icon" class="fa-solid fa-play text-lg ml-0.5"></i>
+              </button>
+              <button onclick="playNextTrack()" class="w-10 h-10 rounded-full bg-oat-soft border border-oat-border hover:bg-oat-hover text-oat-text flex items-center justify-center transition-all">
+                <i class="fa-solid fa-forward text-sm"></i>
+              </button>
+            </div>
+
+            <div class="flex items-center space-x-2 pl-4 border-l border-oat-border">
+              <i class="fa-solid fa-volume-high text-xs text-oat-muted"></i>
+              <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.8" class="w-20">
+            </div>
+          </div>
+        </div>
+
+        <!-- Waveform Dynamic Bar Spectrum -->
+        <div class="pt-6 space-y-3">
+          <div class="h-14 w-full bg-oat-soft/60 rounded-xl border border-oat-border p-2 flex items-end justify-between gap-1 overflow-hidden" id="visualizer-bars">
+            <!-- JavaScript generates dynamic visualizer bars -->
+          </div>
+
+          <!-- Progress Bar & Timers -->
+          <div class="space-y-1">
+            <input type="range" id="seek-slider" min="0" max="100" value="0" class="w-full">
+            <div class="flex justify-between text-[11px] font-mono text-oat-muted">
+              <span id="time-current">00:00</span>
+              <span id="time-duration">01:30</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Beat Selection Grid (4 Beat Cards) -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold text-oat-text tracking-tight">精選 Beats 作品集</h3>
+          <span class="text-xs text-oat-muted font-mono">Total: 4 Beats</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Beat Card 0 -->
+          <div id="beat-card-0" onclick="loadBeatCard(0)" class="bg-oat-card rounded-xl p-5 border border-oat-border card-shadow card-shadow-hover cursor-pointer group flex flex-col justify-between space-y-4 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="px-2.5 py-0.5 bg-oat-soft border border-oat-border text-[11px] font-semibold text-oat-accent rounded-md">Emo Hip-Hop</span>
+                <h4 class="text-lg font-bold text-oat-text mt-2 group-hover:text-oat-accent transition-colors">Midnight Reflections</h4>
+              </div>
+              <span class="text-xs font-mono text-oat-muted px-2 py-1 bg-oat-soft rounded-md border border-oat-border">135 BPM</span>
+            </div>
+            <p class="text-xs text-oat-muted leading-relaxed">
+              融合憂傷的吉他與重打擊 808 聲軌，營造深邃情感氛圍的情感 Hip-Hop 節奏。
+            </p>
+            <div class="flex justify-between items-center text-xs font-mono text-oat-muted pt-2 border-t border-oat-border/60">
+              <span>Key: C Minor</span>
+              <span class="text-oat-accent font-semibold flex items-center space-x-1">
+                <span>播放預覽</span>
+                <i class="fa-solid fa-play text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Beat Card 1 -->
+          <div id="beat-card-1" onclick="loadBeatCard(1)" class="bg-oat-card rounded-xl p-5 border border-oat-border card-shadow card-shadow-hover cursor-pointer group flex flex-col justify-between space-y-4 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="px-2.5 py-0.5 bg-oat-soft border border-oat-border text-[11px] font-semibold text-oat-accent rounded-md">UK Drill</span>
+                <h4 class="text-lg font-bold text-oat-text mt-2 group-hover:text-oat-accent transition-colors">London Sliding Bass</h4>
+              </div>
+              <span class="text-xs font-mono text-oat-muted px-2 py-1 bg-oat-soft rounded-md border border-oat-border">142 BPM</span>
+            </div>
+            <p class="text-xs text-oat-muted leading-relaxed">
+              經典 UK Drill 音色，包含大幅度音高滑動的 Sliding 808 點切與緊密的 Snares/Hi-hats 切分音。
+            </p>
+            <div class="flex justify-between items-center text-xs font-mono text-oat-muted pt-2 border-t border-oat-border/60">
+              <span>Key: G Minor</span>
+              <span class="text-oat-accent font-semibold flex items-center space-x-1">
+                <span>播放預覽</span>
+                <i class="fa-solid fa-play text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Beat Card 2 -->
+          <div id="beat-card-2" onclick="loadBeatCard(2)" class="bg-oat-card rounded-xl p-5 border border-oat-border card-shadow card-shadow-hover cursor-pointer group flex flex-col justify-between space-y-4 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="px-2.5 py-0.5 bg-oat-soft border border-oat-border text-[11px] font-semibold text-oat-accent rounded-md">Hoodtrap</span>
+                <h4 class="text-lg font-bold text-oat-text mt-2 group-hover:text-oat-accent transition-colors">Dark Alley Phantom</h4>
+              </div>
+              <span class="text-xs font-mono text-oat-muted px-2 py-1 bg-oat-soft rounded-md border border-oat-border">150 BPM</span>
+            </div>
+            <p class="text-xs text-oat-muted leading-relaxed">
+              高 BPM 衝擊力，結合超快速 Hi-hat Rolls 與極致黑暗的鋼琴和弦，展現極高能量。
+            </p>
+            <div class="flex justify-between items-center text-xs font-mono text-oat-muted pt-2 border-t border-oat-border/60">
+              <span>Key: F Minor</span>
+              <span class="text-oat-accent font-semibold flex items-center space-x-1">
+                <span>播放預覽</span>
+                <i class="fa-solid fa-play text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Beat Card 3 -->
+          <div id="beat-card-3" onclick="loadBeatCard(3)" class="bg-oat-card rounded-xl p-5 border border-oat-border card-shadow card-shadow-hover cursor-pointer group flex flex-col justify-between space-y-4 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="px-2.5 py-0.5 bg-oat-soft border border-oat-border text-[11px] font-semibold text-oat-accent rounded-md">Melodic Trap</span>
+                <h4 class="text-lg font-bold text-oat-text mt-2 group-hover:text-oat-accent transition-colors">Urban Gold Atmosphere</h4>
+              </div>
+              <span class="text-xs font-mono text-oat-muted px-2 py-1 bg-oat-soft rounded-md border border-oat-border">140 BPM</span>
+            </div>
+            <p class="text-xs text-oat-muted leading-relaxed">
+              現代主流風格，擁有清晰飽滿的琴音旋律與洗腦鼓組，極具發行質感的 Trap 音軌。
+            </p>
+            <div class="flex justify-between items-center text-xs font-mono text-oat-muted pt-2 border-t border-oat-border/60">
+              <span>Key: D Major</span>
+              <span class="text-oat-accent font-semibold flex items-center space-x-1">
+                <span>播放預覽</span>
+                <i class="fa-solid fa-play text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER (NO EMAIL ADDRESS) ================= -->
+  <footer class="bg-oat-card border-t border-oat-border py-6 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-oat-muted space-y-2">
+      <div class="flex items-center justify-center space-x-3">
+        <span class="font-semibold text-oat-text">高子崴</span>
+        <span>•</span>
+        <span class="font-mono">B48B022</span>
+      </div>
+      <div>
+        © 2026 All Rights Reserved. Minimalist Audio & Design Portfolio.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    /* ====================================================
+       1. DATA STRUCTURES & BEATS CATALOG
+       ==================================================== */
+    const beatsData = [
+      {
+        id: 0,
+        title: "Midnight Reflections",
+        artist: "Produced by 高子崴",
+        genre: "Emo Hip-Hop",
+        bpm: 135,
+        key: "C Minor",
+        desc: "融合憂傷的吉他與重打擊 808 聲軌，營造深邃情感氛圍的情感 Hip-Hop 節奏。"
+      },
+      {
+        id: 1,
+        title: "London Sliding Bass",
+        artist: "Produced by 高子崴",
+        genre: "UK Drill",
+        bpm: 142,
+        key: "G Minor",
+        desc: "經典 UK Drill 音色，包含大幅度音高滑動的 Sliding 808 點切與緊密的 Snares/Hi-hats 切分音。"
+      },
+      {
+        id: 2,
+        title: "Dark Alley Phantom",
+        artist: "Produced by 高子崴",
+        genre: "Hoodtrap",
+        bpm: 150,
+        key: "F Minor",
+        desc: "高 BPM 衝擊力，結合超快速 Hi-hat Rolls 與極致黑暗的鋼琴和弦，展現極高能量。"
+      },
+      {
+        id: 3,
+        title: "Urban Gold Atmosphere",
+        artist: "Produced by 高子崴",
+        genre: "Melodic Trap",
+        bpm: 140,
+        key: "D Major",
+        desc: "現代主流風格，擁有清晰飽滿的琴音旋律與洗腦鼓組，極具發行質感的 Trap 音軌。"
+      }
+    ];
+
+    let currentTrackIndex = 0;
+    let isPlaying = false;
+    let audioContext = null;
+    let synthInterval = null;
+    let playbackTime = 0;
+    let maxDuration = 90; // Default 1:30 preview length
+
+    /* ====================================================
+       2. TAB SWITCHING LOGIC
+       ==================================================== */
+    function switchTab(tabName) {
+      const musicTabContent = document.getElementById('tab-content-music');
+      const aboutTabContent = document.getElementById('tab-content-about');
+      const musicBtn = document.getElementById('tab-btn-music');
+      const aboutBtn = document.getElementById('tab-btn-about');
+
+      if (tabName === 'music') {
+        musicTabContent.classList.remove('hidden');
+        aboutTabContent.classList.add('hidden');
+        
+        musicBtn.className = "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center space-x-2 bg-white text-oat-text shadow-sm";
+        aboutBtn.className = "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-oat-muted hover:text-oat-text";
+      } else {
+        musicTabContent.classList.add('hidden');
+        aboutTabContent.classList.remove('hidden');
+
+        aboutBtn.className = "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center space-x-2 bg-white text-oat-text shadow-sm";
+        musicBtn.className = "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-oat-muted hover:text-oat-text";
+      }
+    }
+
+    /* ====================================================
+       3. SYNTHESIZER AUDIO ENGINE
+       ==================================================== */
+    function initAudioContext() {
+      if (!audioContext) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        audioContext = new AudioCtx();
+      }
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+    }
+
+    function playSynthBeatStep(step, trackInfo) {
+      if (!isPlaying || !audioContext) return;
+
+      const now = audioContext.currentTime;
+      const vol = parseFloat(document.getElementById('volume-slider').value) || 0.8;
+
+      // Kick Drum (Step 0, 8, 10)
+      if (step === 0 || step === 8 || (trackInfo.id === 1 && step === 10)) {
+        const osc = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        osc.frequency.setValueAtTime(150, now);
+        osc.frequency.exponentialRampToValueAtTime(30, now + 0.15);
+        gain.gain.setValueAtTime(1.0 * vol, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+        osc.connect(gain);
+        gain.connect(audioContext.destination);
+        osc.start(now);
+        osc.stop(now + 0.2);
+      }
+
+      // Snare Drum (Step 4, 12)
+      if (step === 4 || step === 12) {
+        const noiseBuffer = audioContext.createBuffer(1, audioContext.sampleRate * 0.1, audioContext.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < noiseBuffer.length; i++) {
+          output[i] = Math.random() * 2 - 1;
+        }
+        const whiteNoise = audioContext.createBufferSource();
+        whiteNoise.buffer = noiseBuffer;
+        const filter = audioContext.createBiquadFilter();
+        filter.type = 'highpass';
+        filter.frequency.value = 1000;
+        const gain = audioContext.createGain();
+        gain.gain.setValueAtTime(0.6 * vol, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+        whiteNoise.connect(filter);
+        filter.connect(gain);
+        gain.connect(audioContext.destination);
+        whiteNoise.start(now);
+      }
+
+      // Melodic Notes
+      if (step % 2 === 0) {
+        const osc = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        const scale = trackInfo.id === 0 ? [261.63, 311.13, 392.00, 466.16] : // C Minor Emo
+                      trackInfo.id === 1 ? [196.00, 233.08, 293.66, 349.23] : // G Minor Drill
+                      trackInfo.id === 2 ? [174.61, 207.65, 261.63, 311.13] : // F Minor Hoodtrap
+                                           [293.66, 369.99, 440.00, 554.37];  // D Major Trap
+        
+        const note = scale[Math.floor(Math.random() * scale.length)];
+        osc.type = trackInfo.id === 2 ? 'sawtooth' : 'sine';
+        osc.frequency.setValueAtTime(note, now);
+        gain.gain.setValueAtTime(0.2 * vol, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+        osc.connect(gain);
+        gain.connect(audioContext.destination);
+        osc.start(now);
+        osc.stop(now + 0.3);
+      }
+    }
+
+    function togglePlayPause() {
+      initAudioContext();
+      isPlaying = !isPlaying;
+
+      const track = beatsData[currentTrackIndex];
+      const mainBtnIcon = document.getElementById('main-play-icon');
+      const waveBadge = document.getElementById('playing-wave-badge');
+
+      if (isPlaying) {
+        mainBtnIcon.className = "fa-solid fa-pause text-lg";
+        waveBadge.classList.remove('hidden');
+        startSynthLoop(track);
+      } else {
+        mainBtnIcon.className = "fa-solid fa-play text-lg ml-0.5";
+        waveBadge.classList.add('hidden');
+        clearInterval(synthInterval);
+      }
+    }
+
+    let currentStep = 0;
+    function startSynthLoop(track) {
+      clearInterval(synthInterval);
+      const bpm = track.bpm || 140;
+      const intervalMs = (60 / bpm / 4) * 1000;
+
+      synthInterval = setInterval(() => {
+        if (!isPlaying) return;
+        playSynthBeatStep(currentStep, track);
+        currentStep = (currentStep + 1) % 16;
+        
+        playbackTime += (intervalMs / 1000);
+        if (playbackTime >= maxDuration) playbackTime = 0;
+        updateProgressUI();
+      }, intervalMs);
+    }
+
+    function loadBeatCard(index) {
+      currentTrackIndex = index;
+      const track = beatsData[index];
+
+      document.getElementById('player-title').innerText = track.title;
+      document.getElementById('player-artist').innerText = track.artist;
+      document.getElementById('player-genre-badge').innerText = track.genre;
+      document.getElementById('player-bpm-badge').innerText = `${track.bpm} BPM`;
+
+      playbackTime = 0;
+      updateProgressUI();
+
+      for (let i = 0; i < 4; i++) {
+        const card = document.getElementById(`beat-card-${i}`);
+        if (card) {
+          if (i === index) {
+            card.classList.add('ring-2', 'ring-oat-accent');
+          } else {
+            card.classList.remove('ring-2', 'ring-oat-accent');
+          }
+        }
+      }
+
+      isPlaying = false;
+      togglePlayPause();
+    }
+
+    function playNextTrack() {
+      const nextIdx = (currentTrackIndex + 1) % beatsData.length;
+      loadBeatCard(nextIdx);
+    }
+
+    function playPrevTrack() {
+      const prevIdx = (currentTrackIndex - 1 + beatsData.length) % beatsData.length;
+      loadBeatCard(prevIdx);
+    }
+
+    /* ====================================================
+       4. PROGRESS BAR & VOLUME UPDATES
+       ==================================================== */
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    function updateProgressUI() {
+      document.getElementById('time-current').innerText = formatTime(playbackTime);
+      document.getElementById('time-duration').innerText = formatTime(maxDuration);
+      
+      const seekSlider = document.getElementById('seek-slider');
+      if (maxDuration > 0) {
+        seekSlider.value = (playbackTime / maxDuration) * 100;
+      }
+    }
+
+    document.getElementById('seek-slider').addEventListener('input', function(e) {
+      const seekToPercent = parseFloat(e.target.value);
+      playbackTime = (seekToPercent / 100) * maxDuration;
+      updateProgressUI();
+    });
+
+    /* ====================================================
+       5. SPECTRUM VISUALIZER BARS
+       ==================================================== */
+    function buildVisualizerBars() {
+      const container = document.getElementById('visualizer-bars');
+      container.innerHTML = '';
+      for (let i = 0; i < 36; i++) {
+        const bar = document.createElement('div');
+        bar.id = `v-bar-${i}`;
+        bar.className = 'w-1.5 bg-oat-accent/40 rounded-t transition-all duration-75';
+        bar.style.height = '15%';
+        container.appendChild(bar);
+      }
+    }
+
+    function animateSpectrum() {
+      requestAnimationFrame(animateSpectrum);
+      for (let i = 0; i < 36; i++) {
+        const bar = document.getElementById(`v-bar-${i}`);
+        if (bar) {
+          if (isPlaying) {
+            const randomHeight = Math.floor(Math.random() * 85) + 15;
+            bar.style.height = `${randomHeight}%`;
+            bar.style.backgroundColor = '#8c7b6c';
+          } else {
+            bar.style.height = '10%';
+            bar.style.backgroundColor = '#e5e3dc';
+          }
+        }
+      }
+    }
+
+    /* ====================================================
+       6. ONLOAD INITIALIZATION
+       ==================================================== */
+    window.onload = function() {
+      buildVisualizerBars();
+      animateSpectrum();
+      const firstCard = document.getElementById('beat-card-0');
+      if (firstCard) firstCard.classList.add('ring-2', 'ring-oat-accent');
+    };
+  </script>
+</body>
+</html>
